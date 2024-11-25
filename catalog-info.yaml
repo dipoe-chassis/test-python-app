@@ -44,8 +44,8 @@ spec:
         post:
           tags:
             - user
-          summary: Register a new user
-          description: Register a new user to the API.
+          summary: Register a new user to our server
+          description: Register a new user to use the API
           operationId: registerUser
           requestBody:
             description: User details for registration
