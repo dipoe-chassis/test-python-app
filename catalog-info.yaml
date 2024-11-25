@@ -1,0 +1,126 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "test-python-app"
+spec:
+  type: service
+  owner: user:chassis
+  lifecycle: experimental
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  namespace: default
+  name: "test-python-app"
+  description: The Simple Auth API using Python
+spec:
+  type: openapi
+  lifecycle: experimental
+  owner: group:dipoe-chassis
+  definition: >
+    openapi: 3.1.0
+
+    info:
+      title: Swagger Simple Authentication API - OpenAPI 3.1
+      description: |-
+        Swagger documentation for the Simple Authentication API.
+      termsOfService: http://swagger.io/terms/
+      contact:
+        email: apiteam@swagger.io
+      license:
+        name: Apache 2.0
+        url: http://www.apache.org/licenses/LICENSE-2.0.html
+      version: 1.0.11
+    externalDocs:
+      description: Find out more about Swagger
+      url: http://swagger.io
+    servers:
+      - url: https://test-python-app.chassis.zone
+    tags:
+      - name: user
+        description: User-related operations.
+    paths:
+      /register:
+        post:
+          tags:
+            - user
+          summary: Register a new user
+          description: Register a new user to the API.
+          operationId: registerUser
+          requestBody:
+            description: User details for registration
+            required: true
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/User'
+          responses:
+            '200':
+              description: Successful registration
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: User registered successfully
+                      userId:
+                        type: integer
+                        example: 1
+            '400':
+              description: User already exists
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: user exists
+      /login:
+        post:
+          tags:
+            - user
+          summary: User login
+          description: Log a user into the system.
+          operationId: loginUser
+          requestBody:
+            description: User credentials
+            required: true
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/User'
+          responses:
+            '200':
+              description: Successful login
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: Login successful
+            '400':
+              description: Invalid username or password
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: Invalid username or password
+    components:
+      schemas:
+        User:
+          type: object
+          properties:
+            username:
+              type: string
+              example: sanjeev
+            password:
+              type: string
+              example: gaafdsgfdhtrysrthgfd

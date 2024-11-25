@@ -1,0 +1,43 @@
+# Environment variables
+.env
+myenv
+
+# MacOS system files
+.DS_Store
+.DS_STORE
+
+# Python cache directories
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment directories
+venv/
+env/
+env.bak/
+venv.bak/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Pytest cache
+.pytest_cache/
+
+# Pyre type checker
+.pyre/
+
+# Coverage reports
+coverage.xml
+*.cover
+.coverage
+*.coverage.* 
+*.log
+
+# IDE specific files
+.idea/
+.vscode/
+
+# Other files you might want to ignore
+*.egg-info/
+*.egg
+*.whl
