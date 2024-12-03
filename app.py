@@ -24,7 +24,7 @@ logger = logging.getLogger(__name__)
 
 @app.route('/')
 def myhome():
-    return jsonify({'deployment' : 'success'})
+    return jsonify({'deployment' : 'success! ogogogogogo'})
 
 @app.route('/register', methods=['POST'])
 def register():
@@ -34,7 +34,7 @@ def register():
 
     if username == "admin" and password == "admin":
 
-        return jsonify({'message': 'User registered successfully'}), 201
+        return jsonify({'message': 'User registered successfully!'}), 201
     else:
         return jsonify({"message": "NOPE!"})
 
